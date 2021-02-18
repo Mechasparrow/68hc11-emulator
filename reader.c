@@ -140,14 +140,15 @@ void processCommands(Node * commandPtr){
         if (strcmp("LDAA", p->msg) == 0){
             printf("LDAA command\n");
             twobytes data = processAddress(p->next->msg);
-            printf("hh: %x\n", data.hh);
-            printf("ll: %x\n", data.ll);
+            printf("data: $%02X%02X\n", (unsigned char)data.hh, (unsigned char)data.ll);
             printf("\n");
         }
         if (strcmp("MOV", p->msg) == 0){
             printf("MOV command\n");
             twobytes from = processAddress(p->next->msg);
             twobytes to = processAddress(p->next->next->msg);
+            printf("from: $%02X%02X\n", (unsigned char)from.hh, (unsigned char)from.ll);
+            printf("to: $%02X%02X\n", (unsigned char)to.hh, (unsigned char)to.ll);
             printf("\n");
         }
     }
